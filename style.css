@@ -1343,7 +1343,7 @@ body.menu-open {
 
   position: relative;
   left: 50%;
-  transform: translate(-10%);
+  transform: translate(-30%);
   /*
   top: 0;
   left: calc(1 * (500px + 1.4rem)); /* Start with first GIF halfway off-screen 
