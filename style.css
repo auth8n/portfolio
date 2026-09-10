@@ -665,7 +665,7 @@ body.menu-open {
     z-index: 50;
     align-items: center;
     padding: 0 5%;
-    background-image: url('My\ Image.jpg');
+    background-image: url('my\ image.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1322,7 +1322,7 @@ body.menu-open {
     width: 100%; /* was previously 100% */
     height: 900px; /* Adjust based on your needs */
     overflow: hidden;
-    margin: 4rem 0;
+    margin: 1.5rem 0;
 }
 
 .gif-track {
@@ -1338,27 +1338,38 @@ body.menu-open {
 
 .top-track {
   overflow: hidden;
-  
   top: 0;
-  left: calc(1 * (500px + 1.4rem)); /* Start with first GIF halfway off-screen */
+  margin: 4rem 0;
+
+  position: relative;
+  left: 50%;
+  transform: translate(-10%);
+  /*
+  top: 0;
+  left: calc(1 * (500px + 1.4rem)); /* Start with first GIF halfway off-screen 
   margin: 4rem 0; 
-  transform: translateX(-5%);
+  transform: translateX(-54%);*/
 
 }
 
 .bottom-track {
+    overflow: hidden;
+    margin: 0;
+    bottom: 0;
+    position: relative;
+  left: 50%;
+  transform: translate(-20%);
+    /*
+  overflow: auto;
+
   bottom: 0;
-   /* Start with last GIF halfway off-screen */
-   left: calc(-3 * (500px + 1.4rem));
-  transform: translateX(25%);
+   /* Start with last GIF halfway off-screen
+  left: calc( 2* (500px + 1.4rem));
+  transform: translateX(-25%);*/
+  /*Decided to remove this whole moving */
   
 }
 
-.top-track,
-.bottom-track {
-  will-change: transform;
-  transition: transform 0.05s linear; /* Optional, to smooth small jumps */
-}
 
 
 .gif-container {
@@ -1433,14 +1444,7 @@ body.menu-open {
         left: calc(-2 * (210px + 1.4rem));
     }
 
-    .bottom-track {
-        bottom: 0;
-        /*Make the track appear so far left that only half of the last gif is visible*/
-        left: calc(-3 * (210px + 1.4rem));
-
-        transform: translateX(5%);
-        
-    }
+    
 }
 
 

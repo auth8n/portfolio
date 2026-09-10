@@ -148,36 +148,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-//for burger visibility
-/*document.addEventListener('DOMContentLoaded', function () {
-  const burger = document.querySelector('.burger');
-  const nav = document.querySelector('nav'); // Assuming this is your top nav
-
-  function handleScroll() {
-    const navBottom = nav.getBoundingClientRect().bottom;
-
-    if (navBottom < 0) {
-      burger.style.display = 'flex'; // Show burger when nav is out of view
-    } else {
-      burger.style.display = 'none'; // Hide when back at top
-      burger.classList.remove('active'); // Reset active state
-      document.querySelector('.nav-links')?.classList.remove('active');
-      document.querySelector('.nav-overlay')?.classList.remove('active');
-      document.body.classList.remove('menu-open');
-    }
-  }
-
-  // Initial check
-  handleScroll();
-
-  // Listen for scroll changes
-  window.addEventListener('scroll', handleScroll);
-});
-*/
-
-
-
-
 
 //for project section in home page
 document.addEventListener('DOMContentLoaded', function() {
@@ -280,182 +250,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-//Show off section
-/*document.addEventListener('DOMContentLoaded', function() {
-  const topTrack = document.querySelector('.top-track');
-  const bottomTrack = document.querySelector('.bottom-track');
-  const section = document.querySelector('.show-off');
-  let lastScroll = 0;
-  let isScrollingDown = false;
-  let animationFrame;
-
-  function handleScroll() {
-    const sectionRect = section.getBoundingClientRect();
-    const sectionTop = sectionRect.top;
-    const sectionHeight = sectionRect.height;
-    const windowHeight = window.innerHeight;
-
-    // Only animate when section is in view
-    if (sectionTop < windowHeight && sectionTop + sectionHeight > 0) {
-      const scrollProgress = Math.min(Math.max(-sectionTop / windowHeight, 0), 1);
-      
-      if (isScrollingDown) {
-        topTrack.style.transform = `translateX(${25 * scrollProgress}%)`;
-        bottomTrack.style.transform = `translateX(${-25 * scrollProgress}%)`;
-      } else {
-        topTrack.style.transform = `translateX(${25 - 25 * scrollProgress}%)`;
-        bottomTrack.style.transform = `translateX(${-25 + 25 * scrollProgress}%)`;
-      }
-    }
-  }
-
-  function checkScrollDirection() {
-    const currentScroll = window.pageYOffset;
-    isScrollingDown = currentScroll > lastScroll;
-    lastScroll = currentScroll;
-    
-    if (!animationFrame) {
-      animationFrame = requestAnimationFrame(() => {
-        handleScroll();
-        animationFrame = null;
-      });
-    }
-  }
-
-  // Initialize positions
-  topTrack.style.transform = 'translateX(0%)';
-  bottomTrack.style.transform = 'translateX(0%)';
-
-  window.addEventListener('scroll', checkScrollDirection);
-  
-  // Cleanup on unmount if needed
-  return () => {
-    cancelAnimationFrame(animationFrame);
-    window.removeEventListener('scroll', checkScrollDirection);
-  };
-});
-
-
-*/
-
-
-
-
-
-
-/*document.addEventListener('DOMContentLoaded', function() {
-  const topTrack = document.querySelector('.top-track');
-  const bottomTrack = document.querySelector('.bottom-track');
-  const section = document.querySelector('.show-off');
-  
-  let lastScrollY = window.scrollY;
-  let scrollDirection = 0; // 1 = down, -1 = up
-  let scrollProgress = 0;
-  let isAnimating = false;
-
-  // Set initial positions (half off-screen)
-  gsap.set(topTrack, { x: '-25%' });
-  gsap.set(bottomTrack, { x: '25%' });
-
-  function updateTracks() {
-    // Calculate progress (0 to 1) based on section visibility
-    const sectionRect = section.getBoundingClientRect();
-    const viewportHeight = window.innerHeight;
-    const visibleHeight = Math.min(sectionRect.bottom, viewportHeight) - Math.max(sectionRect.top, 0);
-    scrollProgress = Math.min(Math.max(visibleHeight / viewportHeight, 0), 1);
-
-    // Apply movement based on scroll direction
-    if (scrollDirection > 0) { // Scrolling down
-      gsap.to(topTrack, { x: `${-25 + scrollProgress * 25}%`, duration: 0.8, ease: "power2.out" });
-      gsap.to(bottomTrack, { x: `${25 - scrollProgress * 25}%`, duration: 0.8, ease: "power2.out" });
-    } else { // Scrolling up
-      gsap.to(topTrack, { x: `${-25 + (1 - scrollProgress) * 25}%`, duration: 0.8, ease: "power2.out" });
-      gsap.to(bottomTrack, { x: `${25 - (1 - scrollProgress) * 25}%`, duration: 0.8, ease: "power2.out" });
-    }
-  }
-
-  function handleScroll() {
-    const currentScrollY = window.scrollY;
-    scrollDirection = Math.sign(currentScrollY - lastScrollY);
-    lastScrollY = currentScrollY;
-
-    if (!isAnimating) {
-      isAnimating = true;
-      requestAnimationFrame(() => {
-        updateTracks();
-        isAnimating = false;
-      });
-    }
-  }
-
-  window.addEventListener('scroll', handleScroll);
-
-  // Initialize
-  updateTracks();
-});*/
-
-
-
-
-
-
-
-
-
-
-
-
-/*document.addEventListener('DOMContentLoaded', function() {
-  const topTrack = document.querySelector('.top-track');
-  const bottomTrack = document.querySelector('.bottom-track');
-  const section = document.querySelector('.show-off');
-  
-  let lastScrollY = window.scrollY;
-  let scrollDirection = 0;
-  let animationFrame;
-
-  // Initial positions
-  topTrack.style.transform = 'translateX(-25%)';
-  bottomTrack.style.transform = 'translateX(25%)';
-
-  function updateTracks() {
-    const sectionTop = section.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
-    const progress = Math.min(Math.max(-sectionTop / windowHeight, 0), 1);
-
-    if (scrollDirection > 0) { // Scrolling down
-      topTrack.style.transform = `translateX(${-25 + progress * 25}%)`;
-      bottomTrack.style.transform = `translateX(${25 - progress * 25}%)`;
-    } else { // Scrolling up
-      topTrack.style.transform = `translateX(${-25 + (1 - progress) * 25}%)`;
-      bottomTrack.style.transform = `translateX(${25 - (1 - progress) * 25}%)`;
-    }
-  }
-
-  function handleScroll() {
-    const currentScrollY = window.scrollY;
-    scrollDirection = Math.sign(currentScrollY - lastScrollY);
-    lastScrollY = currentScrollY;
-
-    if (!animationFrame) {
-      animationFrame = requestAnimationFrame(() => {
-        updateTracks();
-        animationFrame = null;
-      });
-    }
-  }
-
-  window.addEventListener('scroll', handleScroll);
-});*/
-
-
-
-
-
-
-
-
-
 
 document.addEventListener('DOMContentLoaded', function () {
   const topTrack = document.querySelector('.top-track');
@@ -465,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   let topOffset = 0;
   let bottomOffset = 0;
-
+  /*
   function updateTracks() {
     // Scroll direction
     const currentScrollY = window.scrollY;
@@ -483,8 +277,8 @@ document.addEventListener('DOMContentLoaded', function () {
     topTrack.style.transform = `translateX(${topOffset}px)`;
     bottomTrack.style.transform = `translateX(${bottomOffset}px)`;
 
-    animationFrame = null;
-  }
+    animationFrame = null;()
+  }*/
 
   function handleScroll() {
     if (!animationFrame) {
