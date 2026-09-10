@@ -1326,14 +1326,14 @@ body.menu-open {
 }
 
 .gif-track {
-  /*position: relative;*/
-  display: flex;
-  
-  justify-content: center; 
-  /*width: 150%; /* Extra width for overflow */
-  width: max-content;
-  will-change: transform;
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    /*position: relative;*/
+    display: flex;
+
+    justify-content: center; 
+    /*width: 150%; /* Extra width for overflow */
+    width: max-content;
+    will-change: transform;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .top-track {
