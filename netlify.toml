@@ -7,7 +7,7 @@ redirects = []
   [functions."*"]
 
 [build]
-publish = "/home/user/Documents/my-portfolio"
+publish = "."
 publishOrigin = "config"
 
   [build.environment]
